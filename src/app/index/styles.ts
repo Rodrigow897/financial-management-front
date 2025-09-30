@@ -4,14 +4,16 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor: "#F9FBF9",
-        paddingTop: 20,
+        paddingTop: 40,
     },
     header:{
-        padding: 15
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "center"
     },
     logo: {
-        width: 380,
-        height: 360
+        width: "90%",
+        height: 300
     },
     titleBox: {
         width: "100%",
