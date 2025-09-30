@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#EFF0EF",
         borderRadius: 8,
         color: "#7b7c7bff",
-        fontSize: 16
+        fontSize: 16,
+        padding: 15
     }
 });
 

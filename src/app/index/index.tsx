@@ -1,6 +1,8 @@
+import Button from "@/components/button";
 import { Input } from "@/components/input";
 import { Image, Text, View } from "react-native";
 import styles from "./styles";
+
 
 
 export default function index(){
@@ -27,7 +29,17 @@ export default function index(){
                 <Input
                     placeholder="Senha"
                 />
-                <Input/>
+                <View
+                    style={{
+                        height: 1,
+                        width: "100%",
+                        backgroundColor: "#c0bdbdff",
+                        marginVertical: 20,
+                    }}
+                ></View>
+                <Button
+                    title="Entrar"
+                />
             </View>
         </View>
     );
