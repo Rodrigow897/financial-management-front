@@ -9,6 +9,7 @@ import styles from "./styles";
 export default function index(){
     return(
         <View style={styles.container}>
+            
             <View style={styles.header}>
                 <Image style={styles.logo} source={require("../assets/images/logo.png")}/>
             </View>
@@ -21,7 +22,9 @@ export default function index(){
 
             {/*box-input*/}
             <View style={styles.forms}>
-               
+                <Input
+                    placeholder="Nome"
+                />
                 <Input
                     placeholder="E-mail"
                 />
@@ -38,12 +41,13 @@ export default function index(){
                     }}
                 ></View>
                 <Button
-                    title="Entrar"
+                    title="Register"
                 />
-                <TouchableOpacity style={{marginTop: 5,}}
-                    onPress={() => router.push('../register')}>
-                    <Text style={styles.signInText}>Nâo tem uma conta?</Text>
-                </TouchableOpacity>
+                <TouchableOpacity style={styles.back}
+                onPress={() => router.back()}>
+                <Text style={styles.backText}>Já tenho uma conta</Text>
+            </TouchableOpacity>
+
             </View>
         </View>
     );

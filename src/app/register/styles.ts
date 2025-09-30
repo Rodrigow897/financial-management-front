@@ -38,7 +38,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 20
     },
-    signInText:{
+    back:{
+       
+    },
+    backText:{
         fontSize: 15,
         fontWeight: "bold",
         color: "#DA4BDD"
