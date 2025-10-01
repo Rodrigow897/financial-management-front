@@ -6,7 +6,7 @@ import styles from "./styles";
 
 
 
-export default function index(){
+export default function login(){
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -39,6 +39,7 @@ export default function index(){
                 ></View>
                 <Button
                     title="Entrar"
+                  
                 />
                 <TouchableOpacity style={{marginTop: 5,}}
                     onPress={() => router.push('../register')}>
