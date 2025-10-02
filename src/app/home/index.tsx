@@ -20,6 +20,7 @@ export default function home(){
                 selected={selected}
                 onChange={setSelected}
             />
+            
         </View> 
     );
 }
