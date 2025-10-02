@@ -1,5 +1,6 @@
 import { FlatList } from "react-native";
 import Month from "../month";
+import { months } from "../utils/months";
 import styles from "./styles";
 
 
@@ -12,25 +13,13 @@ type Props = {
 export function MonthList({selected, onChange}: Props) {
     return(
         <FlatList 
-            data={[
-                {name: "Janeiro", id: "1"},
-                {name: "Fevereiro", id: "2"},
-                {name: "Março", id: "3"},
-                {name: "Abril", id: "4"},
-                {name: "Maio", id: "5"},
-                {name: "Junho", id: "6"},
-                {name: "Julho", id: "7"},
-                {name: "Agosto", id: "8"},
-                {name: "Setembro", id: "9"},
-                {name: "Outubro", id: "10"},
-                {name: "Novembro", id: "11"},
-                {name: "Dezembro", id: "12"},]}
+            data={months}
             keyExtractor={(item)=>item.id}
             renderItem={({item}) => (
                 <Month 
                     name={item.name}
                     isSelected={item.name === selected}
-                    onPress={() => onChange(item.name)} icon={"filter"}/>  
+                    onPress={() => onChange(item.name)}/>  
             )}
             horizontal
             style={styles.container}

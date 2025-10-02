@@ -1,9 +1,13 @@
-import { MonthList } from '@/components/monthList';
+import { MonthList } from '@/components/months';
 import { Perfil } from '@/components/perfil';
+import months from '@/components/utils/months';
+import { useState } from 'react';
 import { View } from "react-native";
 import styles from "./styles";
 
 export default function home(){
+    const [selected, setSelected] = useState(months[0].name);
+
     return(
         <View style={styles.container}>
             <Perfil
@@ -12,7 +16,10 @@ export default function home(){
                 subtitle='Vamos organizar suas finanças?'
             />
 
-            <MonthList onChange={(name) => console.log(name)}/>
+            <MonthList 
+                selected={selected}
+                onChange={setSelected}
+            />
         </View> 
     );
 }
