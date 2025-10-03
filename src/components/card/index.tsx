@@ -38,12 +38,12 @@ export function Card({name, year, used, limit}: Props){
                     <View style={styles.cardFooter}>
                         <View style={styles.used}>
                             <Text style={styles.usedText}>Usado</Text>
-                            <Text>R$ {used}</Text>
+                            <Text style={styles.usedNumber}>R$ {used.toFixed(2)}</Text>
                         </View>
 
                         <View style={styles.limit}>
                             <Text style={styles.limitText}>Limite</Text>
-                            <Text>R$ {limit}</Text>
+                            <Text style={styles.limitNumber}>R$ {limit.toFixed(2)}</Text>
                         </View>
                     </View>
                 </View>

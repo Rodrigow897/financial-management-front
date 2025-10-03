@@ -68,21 +68,30 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     used: {
-
+        flexDirection: 'column',
+        gap: 7
     },
     usedText: {
         fontSize: 12,
         fontWeight: '400',
         color: '#A1A2A1'
     },
+    usedNumber: {
+        color: '#F9FBF9',
+        fontSize: 14
+    },
     limit: {
-        
+        flexDirection: 'column',
+        gap: 7
     },
     limitText: {
         fontSize: 12,
         fontWeight: '400',
-        color: '#A1A2A1'
-        
+        color: '#A1A2A1' 
+    },
+    limitNumber:{
+        color: '#F9FBF9',
+        fontSize: 14
     }
 });
 
