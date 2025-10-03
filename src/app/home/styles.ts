@@ -14,10 +14,8 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   releasesContainer: {
-    borderWidth: 2,
-    borderColor: "red",
-    height: '45%',
-    maxHeight: '45%',
+    height: '50%',
+    maxHeight: '50%',
     width: '90%',
   },
   counterBox: {

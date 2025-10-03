@@ -1,11 +1,13 @@
 import Card from '@/components/card';
 import { MonthList } from '@/components/months';
 import { Perfil } from '@/components/perfil';
+import { PlusButton } from '@/components/plusButton';
 import ReleasesList from '@/components/releasesList';
 import months from '@/components/utils/months';
 import { useState } from 'react';
 import { Text, View } from "react-native";
 import styles from "./styles";
+
 
 
 export default function home(){
@@ -48,7 +50,9 @@ export default function home(){
 
             </View>
 
-
+            <PlusButton
+                
+            />
                 
         </View> 
     );
