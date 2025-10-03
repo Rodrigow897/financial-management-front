@@ -43,6 +43,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+   modal: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+    blurBackground: {
+    flex: 1,
+  },
 })
 
 export default styles

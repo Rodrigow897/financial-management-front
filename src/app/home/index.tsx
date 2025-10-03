@@ -4,9 +4,11 @@ import { Perfil } from '@/components/perfil';
 import { PlusButton } from '@/components/plusButton';
 import ReleasesList from '@/components/releasesList';
 import months from '@/components/utils/months';
+import { BlurView } from 'expo-blur';
 import { useState } from 'react';
-import { Text, View } from "react-native";
+import { Modal, Text, View } from "react-native";
 import styles from "./styles";
+
 
 
 
@@ -44,15 +46,21 @@ export default function home(){
                     </View>
                 </View>
 
-                <ReleasesList
-                    
+                <ReleasesList  
                 />
-
             </View>
 
             <PlusButton
-                
             />
+
+            {/* Modal */}
+            <Modal transparent visible={true} animationType='slide'>
+                <BlurView intensity={50} tint="dark" style={styles.blurBackground}></BlurView>
+                <View style={styles.modal}>
+                     <Text>Modal</Text>
+                </View>
+
+            </Modal>
                 
         </View> 
     );
