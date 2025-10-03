@@ -13,16 +13,25 @@ const styles = StyleSheet.create({
     backgroundColor: "purple", // cor da linha
     borderRadius: 2,
   },
+  releasesContainer: {
+    borderWidth: 2,
+    borderColor: "red",
+    height: '45%',
+    maxHeight: '45%',
+    width: '90%',
+  },
   counterBox: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '90%',
+    width: '100%',
     paddingHorizontal: 20,
     alignItems: 'center',
     marginTop: 20,
     backgroundColor: '#F9FBF9',
     borderRadius: 10,
-    height: 50
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#dcdddcff'
   },
   counterTitle: {
     color: '#676767',
@@ -35,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E5E6E5',
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
 })
 
 export default styles

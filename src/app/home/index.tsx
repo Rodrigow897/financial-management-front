@@ -1,6 +1,7 @@
 import Card from '@/components/card';
 import { MonthList } from '@/components/months';
 import { Perfil } from '@/components/perfil';
+import ReleasesList from '@/components/releasesList';
 import months from '@/components/utils/months';
 import { useState } from 'react';
 import { Text, View } from "react-native";
@@ -32,14 +33,23 @@ export default function home(){
                 limit={0}
             />
 
-            <View style={styles.counterBox}>
-                <Text style={styles.counterTitle}>LANÇAMENTOS</Text>
-                <View style={styles.counterNumber}>
-                    <Text>{counter}</Text>
+            {/* Lançamentos */}
+            <View style={styles.releasesContainer}>
+                <View style={styles.counterBox}>
+                    <Text style={styles.counterTitle}>LANÇAMENTOS</Text>
+                    <View style={styles.counterNumber}>
+                        <Text>{counter}</Text>
+                    </View>
                 </View>
+
+                <ReleasesList
+                    
+                />
+
             </View>
+
+
                 
-            
         </View> 
     );
 }
