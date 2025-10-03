@@ -77,6 +77,12 @@ const styles = StyleSheet.create({
     },
     limit: {
         
+    },
+    limitText: {
+        fontSize: 12,
+        fontWeight: '400',
+        color: '#A1A2A1'
+        
     }
 });
 

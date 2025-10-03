@@ -42,7 +42,7 @@ export function Card({name, year, used, limit}: Props){
                         </View>
 
                         <View style={styles.limit}>
-                            <Text>Limite</Text>
+                            <Text style={styles.limitText}>Limite</Text>
                             <Text>R$ {limit}</Text>
                         </View>
                     </View>
