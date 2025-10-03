@@ -12,7 +12,7 @@ export function Perfil({title, subtitle, source, ...rest}: Props){
         <View style={styles.header}>
             <Image style={styles.Image} source={source}/>
                 <View style={styles.titleBox}>
-                    <Text style={styles.title}>OLÁ, {title}</Text>
+                    <Text style={styles.title}>Olá, {title}</Text>
                     <Text style={styles.subtitle}>{subtitle}</Text>
                 </View>
                 <TouchableOpacity {...rest}><MaterialIcons name="logout" size={24} color="black" /></TouchableOpacity>

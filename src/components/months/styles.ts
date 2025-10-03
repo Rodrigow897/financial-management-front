@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     content: {
         gap: 16,
         paddingHorizontal: 24,
-    }
+    },
 });
 
 export default styles
