@@ -1,9 +1,12 @@
 import Card from '@/components/card';
+import { Input } from '@/components/input';
+import InputWithIcon from '@/components/inputWithIcon';
 import { MonthList } from '@/components/months';
 import { Perfil } from '@/components/perfil';
 import { PlusButton } from '@/components/plusButton';
 import ReleasesList from '@/components/releasesList';
 import months from '@/components/utils/months';
+import { MaterialIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { useState } from 'react';
 import { Modal, Text, View } from "react-native";
@@ -15,6 +18,8 @@ import styles from "./styles";
 export default function home(){
     const [selected, setSelected] = useState(months[0].name);
     const [counter, setCounter] = useState(0)
+    const [modalVisible, setModalVisible] = useState(true);
+
 
     return(
         <View style={styles.container}>
@@ -51,13 +56,34 @@ export default function home(){
             </View>
 
             <PlusButton
+                onOpen={() => setModalVisible(true)}
             />
 
             {/* Modal */}
-            <Modal transparent visible={true} animationType='slide'>
+            <Modal transparent visible={modalVisible} animationType='slide'>
                 <BlurView intensity={50} tint="dark" style={styles.blurBackground}></BlurView>
                 <View style={styles.modal}>
-                     <Text>Modal</Text>
+                    <View style={styles.modalContent}>
+                        <View style={styles.modalTitle}>
+                            <Text style={styles.modalTitleText}>Novo lançamento</Text>
+                            
+                            <MaterialIcons name='close' size={24} color='#676767' onPress={() => setModalVisible(false)}/>
+                        </View>
+
+                        <View style={styles.modalInputs}>
+                            
+                            <Input
+                                placeholder='Título da transação'
+                            ></Input>
+                            
+                            
+                            <InputWithIcon
+                                placeholder='Categoria'
+                                icon='label-outline'
+                            />
+                           
+                        </View>
+                    </View>
                 </View>
 
             </Modal>

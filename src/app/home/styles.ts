@@ -45,10 +45,35 @@ const styles = StyleSheet.create({
   },
    modal: {
     flex: 1,
-    justifyContent: 'flex-end',
+    padding: 40,
+    backgroundColor: '#F9FBF9',
+    borderRadius: 20
   },
     blurBackground: {
     flex: 1,
+    
+  },
+  modalContent: {
+    
+  },
+  modalTitle: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+  },
+  modalTitleText: {
+    fontWeight: '700',
+    fontSize: 14,
+    color: '#0F0F0F'
+  },
+  modalInputs: {
+    gap:10,
+    marginTop: 30,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
   },
 })
 
