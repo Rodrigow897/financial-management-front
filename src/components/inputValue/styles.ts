@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     input:{
         height: 48,
-        width: 170,
+        width: 173,
         backgroundColor: "#EFF0EF",
         borderRadius: 8,
         borderWidth: 1,

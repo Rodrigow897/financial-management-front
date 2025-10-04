@@ -48,13 +48,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9FBF9',
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
-
     alignItems: 'center',
   },
 
     blurBackground: {
     backgroundColor: '#0f0f0f6a',
-    flex: 1,
+    height: 300,
     borderRadius: 20
   },
   modalContent: {
@@ -86,8 +85,46 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 10,
     alignItems: 'center',
+  },
+  inOutContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'center',
+    marginTop: 20
+  },
+  inButton: {
+    borderWidth: 1,
+    borderColor: '#1FA342',
+    backgroundColor: '#1FA3420D',
+    borderRadius: 8,
+    height: 44,
+    width: 173,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  outButton: {
+    borderWidth: 1,
+    borderColor: '#D93A4A',
+    backgroundColor: '#D93A4A0D',
+    borderRadius: 8,
+    height: 44,
+    width: 173,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  inText: {
+    color: '#1FA342',
+    fontWeight: '700',
+    fontSize: 14,
+  },
+  outText: {
+    color: '#D93A4A',
+    fontWeight: '700',
+    fontSize: 14,
   }
-
 })
 
 export default styles
