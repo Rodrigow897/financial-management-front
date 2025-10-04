@@ -48,13 +48,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9FBF9',
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
+    borderTopWidth: 2,
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    borderColor: '#D93A4A',
     alignItems: 'center',
   },
 
     blurBackground: {
-    backgroundColor: '#0f0f0f6a',
+    backgroundColor: 'rgba(197, 196, 196, 0.25)',
     height: 300,
-    borderRadius: 20
+    borderRadius: 10,
   },
   modalContent: {
     width: '90%',

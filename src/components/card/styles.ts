@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     },
     used: {
         flexDirection: 'column',
-        gap: 7
+        gap: 7,
+        alignItems: 'flex-start',
     },
     usedText: {
         fontSize: 12,
@@ -82,12 +83,13 @@ const styles = StyleSheet.create({
     },
     limit: {
         flexDirection: 'column',
-        gap: 7
+        gap: 7,
+        alignItems: 'flex-end',
     },
     limitText: {
         fontSize: 12,
         fontWeight: '400',
-        color: '#A1A2A1' 
+        color: '#A1A2A1', 
     },
     limitNumber:{
         color: '#F9FBF9',
