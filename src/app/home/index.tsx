@@ -1,5 +1,6 @@
 import Card from '@/components/card';
 import { Input } from '@/components/input';
+import InputValue from '@/components/inputValue';
 import InputWithIcon from '@/components/inputWithIcon';
 import { MonthList } from '@/components/months';
 import { Perfil } from '@/components/perfil';
@@ -61,7 +62,7 @@ export default function home(){
 
             {/* Modal */}
             <Modal transparent visible={modalVisible} animationType='slide'>
-                <BlurView intensity={50} tint="dark" style={styles.blurBackground}></BlurView>
+                <BlurView  style={styles.blurBackground}></BlurView>
                 <View style={styles.modal}>
                     <View style={styles.modalContent}>
                         <View style={styles.modalTitle}>
@@ -72,15 +73,28 @@ export default function home(){
 
                         <View style={styles.modalInputs}>
                             
-                            <Input
-                                placeholder='Título da transação'
-                            ></Input>
-                            
-                            
-                            <InputWithIcon
-                                placeholder='Categoria'
-                                icon='label-outline'
-                            />
+                            <View style={{gap: 10, width: '100%'}}>
+                                <Input
+                                    placeholder='Título da transação'
+                                ></Input>
+                                <InputWithIcon
+                                    placeholder='Categoria'
+                                    icon='label-important-outline'
+                                />
+                            </View>
+
+                            <View style={styles.valueInputContainer}>
+                                <InputValue
+                                    name='R$'
+                                    placeholder='0,00'
+                                />
+                                <InputValue
+                                    icon='calendar-month'
+                                    placeholder='00/00/0000'
+                                />
+                            </View>
+
+
                            
                         </View>
                     </View>

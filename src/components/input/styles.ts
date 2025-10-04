@@ -3,13 +3,13 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     input:{
         height: 52,
-        width: 340,
-        maxWidth: 340,
+        width: '100%',
         backgroundColor: "#EFF0EF",
         borderRadius: 8,
-        color: "#7b7c7bff",
+        borderWidth: 1,
+        borderColor: '#E5E6E5',
         fontSize: 16,
-        padding: 15,
+        paddingHorizontal: 15,
     },
 });
 

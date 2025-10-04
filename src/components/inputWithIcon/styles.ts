@@ -3,19 +3,17 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     input:{
         height: 52,
-        width: 340,
-        maxWidth: 340,
+        width: '100%',
         backgroundColor: "#EFF0EF",
         borderRadius: 8,
-        color: "#7b7c7bff",
         fontSize: 16,
-        padding: 10,
-        paddingRight: 40
+        paddingHorizontal: 15,
+        borderWidth: 1,
+        borderColor: '#E5E6E5',
     },
     inputContainer: {
         flexDirection: "row",
         position: "relative",
-        width: "100%",  
   },
   iconOverlay:{
     position: "absolute",

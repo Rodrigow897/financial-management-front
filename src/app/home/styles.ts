@@ -45,22 +45,28 @@ const styles = StyleSheet.create({
   },
    modal: {
     flex: 1,
-    padding: 40,
     backgroundColor: '#F9FBF9',
+    borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
+
+    alignItems: 'center',
+  },
+
+    blurBackground: {
+    backgroundColor: '#0f0f0f6a',
+    flex: 1,
     borderRadius: 20
   },
-    blurBackground: {
-    flex: 1,
-    
-  },
   modalContent: {
-    
+    width: '90%',
+    marginTop: 40
   },
   modalTitle: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
+    paddingHorizontal: 10
   },
   modalTitleText: {
     fontWeight: '700',
@@ -75,6 +81,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
   },
+  valueInputContainer:{
+    width: '100%',
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'center',
+  }
+
 })
 
 export default styles
