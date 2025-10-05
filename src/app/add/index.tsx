@@ -1,3 +1,5 @@
+import Button from '@/components/button'
+import InputValue from '@/components/inputValue'
 import { MaterialIcons } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import { Text, TouchableOpacity, View } from 'react-native'
@@ -20,6 +22,26 @@ export default function Add() {
                 <View style={styles.formTitle}>
                     <Text style={styles.formTitleText}>NOVO ORÇAMENTO</Text>
                 </View>
+
+                 <View style={styles.formInputs}>
+                    <InputValue
+                        style={{width: 153}}
+                        icon='calendar-month'
+                        placeholder='00/00/0000'
+                    />
+                    <InputValue
+                        style={{width: 153}}
+                        name='R$'
+                        placeholder='0,00'
+                    />
+                </View>
+
+                <View style={{marginTop: 20, width: '90%'}}>
+                <Button
+                        title='Salvar'
+                    />
+                </View>
+
             </View>
 
         </View>

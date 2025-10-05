@@ -9,6 +9,14 @@ const styles = StyleSheet.create({
         color: "#F9FBF9",
         fontSize: 16,
         justifyContent: "center",
+        elevation: 5,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
     },
     title: {
         fontSize: 22,

@@ -31,20 +31,29 @@ const styles = StyleSheet.create({
         width: '90%',
         height: 200,
         backgroundColor: '#F9FBF9',
-        marginTop: 25
+        marginTop: 25,
+        alignItems: 'center',
     },
     formTitle: {
         width: '100%',
         justifyContent: 'center',
         paddingHorizontal: 20,
-        height: 40
+        height: 40,
+        paddingTop: 10
     },
     formTitleText: {
         fontSize: 13,
         fontWeight: '500',
         color: '#676767'
     },
-
+    formInputs: {
+        width: '90%',
+        flexDirection: 'row',
+        height: 50,
+        gap: 10,
+        marginTop: 20
+    },
+    
 });
 
 export default styles;

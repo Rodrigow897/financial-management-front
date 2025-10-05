@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: "row",
         position: "relative",
+        gap: 10
     },
     nameOverlay:{
         position: "absolute",
