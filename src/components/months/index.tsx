@@ -29,3 +29,4 @@ export function MonthList({selected, onChange}: Props) {
     
     )
 }
+export default MonthList;

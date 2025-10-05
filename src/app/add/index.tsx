@@ -42,6 +42,15 @@ export default function Add() {
                     />
                 </View>
 
+
+                {/*registered budgets List*/}
+                <View style={styles.registeredBudgets}>
+                    <View style={styles.registeredBudgetsHeader}>
+                        <Text style={styles.registeredBudgetsTitle}>ORÇAMENTOS CADASTRADOS</Text>
+                    </View>
+                    <View style={styles.registeredBudgetsList}></View>
+                </View>
+
             </View>
 
         </View>

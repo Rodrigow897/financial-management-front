@@ -15,7 +15,15 @@ const styles = StyleSheet.create({
         paddingLeft: 25,
         alignItems: 'center',
         gap: 30,
-        backgroundColor: '#F9FBF9'
+        backgroundColor: '#F9FBF9',
+        elevation: 3,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
     },
     titleText: {
         fontSize: 15,
@@ -33,6 +41,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#F9FBF9',
         marginTop: 25,
         alignItems: 'center',
+        borderRadius: 8,
+        elevation: 3,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
     },
     formTitle: {
         width: '100%',
@@ -53,6 +70,36 @@ const styles = StyleSheet.create({
         gap: 10,
         marginTop: 20
     },
+    registeredBudgets: {
+        width: '100%',
+        height: 412,
+        backgroundColor: '#F9FBF9',
+        marginTop: 25,
+        alignItems: 'center',
+        borderRadius: 8,
+        elevation: 3,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    },
+    registeredBudgetsHeader: {
+        width: '100%',
+        justifyContent: 'center',
+        paddingLeft: 15,
+        height: 35,
+        borderWidth: 1,
+        borderColor: '#EFF0EF'
+    },
+    registeredBudgetsTitle: {
+        fontSize: 13,
+        fontWeight: '500',
+        color: '#676767'
+    },
+
     
 });
 
