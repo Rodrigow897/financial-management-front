@@ -26,7 +26,7 @@ import styles from "./styles";
 export default function home(){
     const [selected, setSelected] = useState(months[0].name);
     const [counter, setCounter] = useState(0)
-    const [modalVisible, setModalVisible] = useState(true);
+    const [modalVisible, setModalVisible] = useState(false);
 
 
     return(
@@ -37,7 +37,7 @@ export default function home(){
                 subtitle='Vamos organizar suas finanças?'
                 backLogin={() => Alert.alert("Sair", "Deseja mesmo sair?", [
                 { text: "Cancelar", onPress: () => console.log("Cancelado"), style: "cancel"},
-                { text: "OK", onPress: () => router.replace('/login')},
+                { text: "OK", onPress: () => router.replace('/register')},
             ])}
             />
 
@@ -52,6 +52,10 @@ export default function home(){
                 year={2025}
                 used={1000}
                 limit={2000}
+                onAdd={() => Alert.alert("Definir orçamento", "Deseja mesmo definir um novo orçamento?", [
+                    { text: "Cancelar", onPress: () => console.log("Cancelado"), style: "cancel"},
+                    { text: "OK", onPress: () => router.push('../add')},
+                ])}
             />
 
             {/* Lançamentos */}

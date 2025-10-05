@@ -8,9 +8,10 @@ type Props = {
     year: number
     used: number
     limit: number
+    onAdd?: () => void
 }
 
-export function Card({name, year, used, limit}: Props){
+export function Card({name, year, used, limit, onAdd}: Props){
     return(
         <View style={styles.card}>
             
@@ -22,7 +23,7 @@ export function Card({name, year, used, limit}: Props){
                         <Text style={styles.cardYear}>  / {year}</Text>
                     </View>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={onAdd}>
                                 <MaterialIcons name="settings" size={24} color="#F9FBF9"/>
                     </TouchableOpacity>
 
@@ -30,7 +31,7 @@ export function Card({name, year, used, limit}: Props){
 
                     <View style={styles.cardBody}>
                         <Text style={styles.cardBodyText}>Orçamento disponivel</Text>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity onPress={onAdd} style={styles.button}>
                             <Text style={styles.buttonText}>Definir orçamento</Text>
                         </TouchableOpacity>
                     </View>

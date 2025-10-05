@@ -10,7 +10,7 @@ export default function login(){
     return(
         <View style={styles.container}>
             <View style={styles.header}>
-                <Image style={styles.logo} source={require("../assets/images/logo.png")}/>
+                <Image style={styles.logo} source={require("./assets/images/logo.png")}/>
             </View>
             
             {/*box-titulo*/}
@@ -39,6 +39,7 @@ export default function login(){
                 ></View>
                 <Button
                     title="Entrar"
+                    onPress={() => router.push('../home')}
                   
                 />
                 <TouchableOpacity style={{marginTop: 5,}}
