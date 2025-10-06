@@ -4,7 +4,7 @@ import { Input } from '@/components/input';
 
 import InputValue from '@/components/inputValue';
 import InputWithIcon from '@/components/inputWithIcon';
-import { MonthList } from '@/components/months';
+import { MonthList } from '@/components/monthsList';
 import { Perfil } from '@/components/perfil';
 
 import { PlusButton } from '@/components/plusButton';
@@ -102,10 +102,12 @@ export default function home(){
                                 <InputValue
                                     name='R$'
                                     placeholder='0,00'
+                                    keyboardType='numeric'
                                 />
                                 <InputValue
                                     icon='calendar-month'
                                     placeholder='00/00/0000 '
+                                    keyboardType='numeric'
                                 />
                             </View>
 

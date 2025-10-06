@@ -1,9 +1,11 @@
+import Budjet from '@/components/budjet'
 import Button from '@/components/button'
 import InputValue from '@/components/inputValue'
 import { MaterialIcons } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import { Text, TouchableOpacity, View } from 'react-native'
 import styles from './style'
+
 
 export default function Add() {
     return (
@@ -27,12 +29,14 @@ export default function Add() {
                     <InputValue
                         style={{width: 153}}
                         icon='calendar-month'
-                        placeholder='00/00/0000'
+                        placeholder='00/0000'
+                        keyboardType='numeric'
                     />
                     <InputValue
                         style={{width: 153}}
                         name='R$'
                         placeholder='0,00'
+                        keyboardType='numeric'
                     />
                 </View>
 
@@ -48,7 +52,18 @@ export default function Add() {
                     <View style={styles.registeredBudgetsHeader}>
                         <Text style={styles.registeredBudgetsTitle}>ORÇAMENTOS CADASTRADOS</Text>
                     </View>
-                    <View style={styles.registeredBudgetsList}></View>
+
+                    <Budjet
+                        name='janeiro'
+                        year='2025'
+                        value= {4000}    
+                    />
+                    <Budjet
+                        name='março'
+                        year='2024'
+                        value= {2500}    
+                    />
+                        
                 </View>
 
             </View>

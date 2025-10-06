@@ -1,5 +1,3 @@
-
-
 type month = {
     id: string;
     name: string;
