@@ -9,9 +9,10 @@ type props = PressableProps & {
 
 export function Month({name, isSelected, ...rest}: props){
     const color = isSelected ? 'black' : '#686968a2';
+    const size = isSelected ? 18 : 14;
     return (
         <Pressable style={styles.container} {...rest}> 
-            <Text style={[styles.name, {color}]} >{name}</Text>
+            <Text style={[styles.name, {color}, {fontSize: size},]} >{name}</Text>
             {isSelected && <View style={styles.line} />}
         </Pressable>
     )
