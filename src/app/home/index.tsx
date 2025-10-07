@@ -12,6 +12,7 @@ import ReleasesList from '@/components/releasesList';
 import months from '@/components/utils/months';
 import { MaterialIcons } from '@expo/vector-icons';
 
+import DataPicker from '@/components/dataPicker';
 import { BlurView } from 'expo-blur';
 import { router } from 'expo-router';
 import { useState } from 'react';
@@ -104,10 +105,9 @@ export default function home(){
                                     placeholder='0,00'
                                     keyboardType='numeric'
                                 />
-                                <InputValue
+                                <DataPicker
                                     icon='calendar-month'
                                     placeholder='00/00/0000 '
-                                    keyboardType='numeric'
                                 />
                             </View>
 

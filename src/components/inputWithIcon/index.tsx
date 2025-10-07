@@ -4,6 +4,7 @@ import styles from "./styles";
 
 type Props = TextInputProps &{
     icon?: keyof typeof MaterialIcons.glyphMap;
+    placeholder?: string;
 }
 
 
