@@ -1,10 +1,10 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
-import { Platform, Pressable, TextInput, View } from "react-native";
+import { Platform, Pressable, TextInput, TextInputProps, View } from "react-native";
 import styles from "./styles";
 
-type Props = {
+type Props = TextInputProps & {
   icon?: keyof typeof MaterialIcons.glyphMap;
   placeholder?: string;
   style?: any;

@@ -1,14 +1,52 @@
-import Budjet from '@/components/budjet'
+import BudjetList from '@/components/budjets'
 import Button from '@/components/button'
 import DataPicker from '@/components/dataPicker'
 import InputValue from '@/components/inputValue'
 import { MaterialIcons } from '@expo/vector-icons'
 import { router } from 'expo-router'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { useState } from 'react'
+import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import styles from './style'
+
+type BudjetItem = {
+  id: string;
+  name: string;
+  year: string;
+  value: number;
+};
 
 
 export default function Add() {
+    const data = new Date()
+    const [budjets, setBudjets] = useState<BudjetItem[]>([]);
+    const [name, setName] = useState(data.toLocaleString('pt-BR', { month: 'long' }));
+    const [year, setYear] = useState('2025');
+    const [value, setValue] = useState('6000');
+
+     function handleAddBudjet() {
+    if (name === null || year === null || value === null) {
+        Alert.alert('Preencha todos os campos');
+        return;
+    };
+
+    const newBudjet: BudjetItem = {
+      id: Date.now().toString(),
+      name,
+      year,
+      value: parseFloat(value),
+    };
+
+    setBudjets([...budjets, newBudjet]);
+    setName('');
+    setYear('');
+    setValue('');
+  }
+
+
+function handleDelete(id: string) {
+    setBudjets((prev) => prev.filter((item) => item.id !== id));
+  }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -31,18 +69,23 @@ export default function Add() {
                         style={{width: 166}}
                         icon='calendar-month'
                         placeholder='00/00/0000'
+                        value={year}
+                        onChangeText={setYear}
                     />
                     <InputValue
                         style={{width: 153}}
                         name='R$'
                         placeholder='0,00'
                         keyboardType='numeric'
+                        value={value}
+                        onChangeText={setValue}
                     />
                 </View>
 
                 <View style={{marginTop: 20, width: '90%'}}>
                 <Button
                         title='Salvar'
+                        onPress={handleAddBudjet}
                     />
                 </View>
 
@@ -53,16 +96,12 @@ export default function Add() {
                         <Text style={styles.registeredBudgetsTitle}>ORÇAMENTOS CADASTRADOS</Text>
                     </View>
 
-                    <Budjet
-                        name='janeiro'
-                        year='2025'
-                        value= {4000}    
+                    
+                    <BudjetList
+                        data={budjets}
+                        onDelete={handleDelete}
                     />
-                    <Budjet
-                        name='março'
-                        year='2024'
-                        value= {2500}    
-                    />
+                    
                         
                 </View>
 
