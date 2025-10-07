@@ -1,5 +1,6 @@
 import Budjet from '@/components/budjet'
 import Button from '@/components/button'
+import DataPicker from '@/components/dataPicker'
 import InputValue from '@/components/inputValue'
 import { MaterialIcons } from '@expo/vector-icons'
 import { router } from 'expo-router'
@@ -26,11 +27,10 @@ export default function Add() {
                 </View>
 
                  <View style={styles.formInputs}>
-                    <InputValue
-                        style={{width: 153}}
+                    <DataPicker
+                        style={{width: 166}}
                         icon='calendar-month'
-                        placeholder='00/0000'
-                        keyboardType='numeric'
+                        placeholder='00/00/0000'
                     />
                     <InputValue
                         style={{width: 153}}

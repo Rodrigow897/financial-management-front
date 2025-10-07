@@ -7,9 +7,10 @@ import styles from "./styles";
 type Props = {
   icon?: keyof typeof MaterialIcons.glyphMap;
   placeholder?: string;
+  style?: any;
 };
 
-export function DataPicker({ icon = "calendar-today", placeholder }: Props) {
+export function DataPicker({ icon = "calendar-today",style, placeholder }: Props) {
   const [date, setDate] = useState<Date | null>(null);
   const [showPicker, setShowPicker] = useState(false);
 
@@ -30,9 +31,9 @@ export function DataPicker({ icon = "calendar-today", placeholder }: Props) {
           style={styles.iconOverlay}
         />
       )}
-      <Pressable onPress={showDatePicker} style={{ flex: 1 }}>
+      <Pressable onPress={showDatePicker}>
         <TextInput
-          style={styles.input}
+          style={[styles.input, style]}
           value={date ? date.toLocaleDateString("pt-BR") : ""}
           placeholder={placeholder || "Selecione a data"}
           placeholderTextColor="#A1A2A1"
