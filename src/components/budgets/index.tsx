@@ -1,5 +1,5 @@
 import { FlatList } from "react-native";
-import Budjet from "../budjet";
+import Budjet from "../budget";
 import styles from "./styles";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   onDelete: (id: string) => void;
 }
 
-export function BudjetList({data, onDelete}: Props) {
+export function BudgetList({data, onDelete}: Props) {
   return (
     <FlatList
       data={data}
@@ -21,6 +21,7 @@ export function BudjetList({data, onDelete}: Props) {
           onDelete={onDelete}
         />
       )}
+                
                   style={styles.container}
                   contentContainerStyle={styles.content}
                   showsHorizontalScrollIndicator={false}
@@ -28,4 +29,4 @@ export function BudjetList({data, onDelete}: Props) {
   );
 }
 
-export default BudjetList;
+export default BudgetList;

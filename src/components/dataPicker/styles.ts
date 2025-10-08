@@ -12,9 +12,15 @@ const styles = StyleSheet.create({
         paddingTop: 15
         
     },
+    containerPicker:{
+        width:"100%",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex:20
+    },
     inputContainer: {
-        flexDirection: "row",
         position: "relative",
+
         gap: 10
     },
     nameOverlay:{

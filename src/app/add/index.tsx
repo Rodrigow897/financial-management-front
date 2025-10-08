@@ -1,4 +1,4 @@
-import BudjetList from '@/components/budjets'
+import BudgetList from '@/components/budgets'
 import Button from '@/components/button'
 import DataPicker from '@/components/dataPicker'
 import InputValue from '@/components/inputValue'
@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import styles from './style'
 
-type BudjetItem = {
+type BudgetItem = {
   id: string;
   name: string;
   year: string;
@@ -18,10 +18,10 @@ type BudjetItem = {
 
 export default function Add() {
     const data = new Date()
-    const [budjets, setBudjets] = useState<BudjetItem[]>([]);
-    const [name, setName] = useState(data.toLocaleString('pt-BR', { month: 'long' }));
-    const [year, setYear] = useState('2025');
-    const [value, setValue] = useState('6000');
+    const [budgets, setBudjets] = useState<BudgetItem[]>([]);
+    const name = data.toLocaleString('pt-BR', { month: 'long' });
+    const [year, setYear] = useState('');
+    const [value, setValue] = useState('');
 
      function handleAddBudjet() {
     if (name === null || year === null || value === null) {
@@ -29,15 +29,14 @@ export default function Add() {
         return;
     };
 
-    const newBudjet: BudjetItem = {
+    const newBudget: BudgetItem = {
       id: Date.now().toString(),
       name,
       year,
       value: parseFloat(value),
     };
 
-    setBudjets([...budjets, newBudjet]);
-    setName('');
+    setBudjets([...budgets, newBudget]);
     setYear('');
     setValue('');
   }
@@ -97,8 +96,8 @@ function handleDelete(id: string) {
                     </View>
 
                     
-                    <BudjetList
-                        data={budjets}
+                    <BudgetList
+                        data={budgets}
                         onDelete={handleDelete}
                     />
                     

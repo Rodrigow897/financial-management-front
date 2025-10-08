@@ -1,7 +1,14 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
-import { Platform, Pressable, TextInput, TextInputProps, View } from "react-native";
+import {
+  Button,
+  Platform,
+  Pressable,
+  TextInput,
+  TextInputProps,
+  View,
+} from "react-native";
 import styles from "./styles";
 
 type Props = TextInputProps & {
@@ -10,16 +17,36 @@ type Props = TextInputProps & {
   style?: any;
 };
 
-export function DataPicker({ icon = "calendar-today",style, placeholder }: Props) {
+export function DataPicker({
+  icon = "calendar-today",
+  style,
+  placeholder,
+}: Props) {
   const [date, setDate] = useState<Date | null>(null);
   const [showPicker, setShowPicker] = useState(false);
+  const [tempDate, setTempDate] = useState<Date>(new Date());
 
   const onChange = (event: any, selectedDate?: Date) => {
-    setShowPicker(Platform.OS === "ios");
-    if (selectedDate) setDate(selectedDate);
+    if (Platform.OS === "android") {
+      setShowPicker(false);
+      if (selectedDate) setDate(selectedDate);
+    } else {
+      // iOS: apenas atualiza data temporária
+      if (selectedDate) setTempDate(selectedDate);
+    }
   };
 
-  const showDatePicker = () => setShowPicker(true);
+  const confirmIOSDate = () => {
+    setDate(tempDate);
+    setShowPicker(false);
+  };
+
+  const showDatePicker = () => {
+    if (Platform.OS === "ios") {
+      setTempDate(date || new Date());
+    }
+    setShowPicker(true);
+  };
 
   return (
     <View style={styles.inputContainer}>
@@ -38,16 +65,36 @@ export function DataPicker({ icon = "calendar-today",style, placeholder }: Props
           placeholder={placeholder || "Selecione a data"}
           placeholderTextColor="#A1A2A1"
           editable={false}
+          pointerEvents="none"
         />
       </Pressable>
 
       {showPicker && (
-        <DateTimePicker
-          value={date || new Date()}
-          mode="date"
-          display="default"
-          onChange={onChange}
-        />
+        <View style={styles.containerPicker}>
+          {Platform.OS === "ios" && (
+            <>
+              <RNDateTimePicker
+                value={tempDate}
+                mode="date"
+                display="default"
+                onChange={onChange}
+                style={{ backgroundColor: "black" }}
+              />
+              <View style={{ marginTop: 10 }}>
+                <Button title="Confirmar" onPress={confirmIOSDate} />
+              </View>
+            </>
+          )}
+
+          {Platform.OS === "android" && (
+            <RNDateTimePicker
+              value={date || new Date()}
+              mode="date"
+              display="default"
+              onChange={onChange}
+            />
+          )}
+        </View>
       )}
     </View>
   );

@@ -10,7 +10,7 @@ type Props = {
   onDelete: (id: string) => void;
 };
 
-export default function Budjet({ id, name, year, value, onDelete }: Props) {
+export default function Budget({ id, name, year, value, onDelete }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.left}>
