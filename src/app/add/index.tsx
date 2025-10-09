@@ -17,14 +17,14 @@ type BudgetItem = {
 
 
 export default function Add() {
-    const data = new Date()
+    const date = new Date()
     const [budgets, setBudjets] = useState<BudgetItem[]>([]);
-    const name = data.toLocaleString('pt-BR', { month: 'long' });
-    const [year, setYear] = useState('');
+    const name = date.toLocaleString('pt-BR', { month: 'long' });
+    const year = date.getFullYear().toString();
     const [value, setValue] = useState('');
 
      function handleAddBudjet() {
-    if (name === null || year === null || value === null) {
+    if (name === null || year === null || value === null ) {
         Alert.alert('Preencha todos os campos');
         return;
     };
@@ -36,8 +36,12 @@ export default function Add() {
       value: parseFloat(value),
     };
 
+    if(isNaN(parseFloat(value))) {
+        Alert.alert('Valor inválido');
+        return;
+    }
+
     setBudjets([...budgets, newBudget]);
-    setYear('');
     setValue('');
   }
 
@@ -67,9 +71,10 @@ function handleDelete(id: string) {
                     <DataPicker
                         style={{width: 166}}
                         icon='calendar-month'
-                        placeholder='00/00/0000'
+                        placeholder= {date.toLocaleDateString('pt-BR')}
+                        placeholderTextColor='#000000'
                         value={year}
-                        onChangeText={setYear}
+                        edit={false}
                     />
                     <InputValue
                         style={{width: 153}}

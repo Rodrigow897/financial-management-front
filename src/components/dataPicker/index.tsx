@@ -15,12 +15,16 @@ type Props = TextInputProps & {
   icon?: keyof typeof MaterialIcons.glyphMap;
   placeholder?: string;
   style?: any;
+  edit?: boolean,
+  placholderColor?: string;
 };
 
 export function DataPicker({
   icon = "calendar-today",
   style,
   placeholder,
+  editable,
+  placeholderTextColor,
 }: Props) {
   const [date, setDate] = useState<Date | null>(null);
   const [showPicker, setShowPicker] = useState(false);
@@ -58,13 +62,15 @@ export function DataPicker({
           style={styles.iconOverlay}
         />
       )}
-      <Pressable onPress={showDatePicker}>
+      <Pressable onPress={showDatePicker}
+        disabled={!editable}>
+          
         <TextInput
           style={[styles.input, style]}
           value={date ? date.toLocaleDateString("pt-BR") : ""}
           placeholder={placeholder || "Selecione a data"}
-          placeholderTextColor="#A1A2A1"
-          editable={false}
+          placeholderTextColor={placeholderTextColor || "#676767"}
+          editable={editable}
           pointerEvents="none"
         />
       </Pressable>
