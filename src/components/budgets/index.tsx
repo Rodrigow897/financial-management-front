@@ -23,8 +23,8 @@ export function BudgetList({data, onDelete}: Props) {
       )}
                 
                   style={styles.container}
-                  contentContainerStyle={styles.content}
-                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={{flexGrow: 1, gap: 10}}
+                  showsVerticalScrollIndicator={true}
     />
   );
 }

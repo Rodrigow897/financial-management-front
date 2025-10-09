@@ -87,6 +87,7 @@ function handleDelete(id: string) {
                         onPress={handleAddBudjet}
                     />
                 </View>
+            </View>
 
 
                 {/*registered budgets List*/}
@@ -98,13 +99,12 @@ function handleDelete(id: string) {
                     
                     <BudgetList
                         data={budgets}
-                        onDelete={handleDelete}
+                          onDelete={handleDelete}
                     />
                     
                         
                 </View>
 
-            </View>
 
         </View>
     )

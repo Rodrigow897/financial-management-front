@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     registeredBudgets: {
-        width: '100%',
+        width: '90%',
         height: 412,
         backgroundColor: '#F9FBF9',
         marginTop: 25,
