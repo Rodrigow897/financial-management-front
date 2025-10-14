@@ -2,6 +2,7 @@ import Release from "@/components/releaseOne";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { FlatList, Text, View } from "react-native";
+import releaseData from "../utils/releases";
 import styles from "./styles";
 
 
@@ -11,16 +12,18 @@ type ReleaseType = {
     id: string;
     title: string;
     subtitle: string;
+    value: number
 };
 
 export function ReleasesList() {
     const [releases, setReleases] = useState<ReleaseType[]>([]);
 
-    const addRelease = (title: string, subtitle: string) => {
+    const addRelease = (title: string, subtitle: string, value: number) => {
         const newRelease: ReleaseType = {
             id: Date.now().toString(), // id automático
             title,
             subtitle,
+            value,
         };
         setReleases([...releases, newRelease]);
     };
@@ -35,9 +38,12 @@ export function ReleasesList() {
     return (
         <>
             <FlatList
-                data={releases}
+                data={releaseData}
                 renderItem={({ item }) => (
-                    <Release title={item.title} subtitle={item.subtitle} />
+                    <Release name={item.name} 
+                    category={item.category} 
+                    value={item.value}
+                    />
                 )}
                 keyExtractor={(item) => item.id}
                 ListEmptyComponent={EmptyListMessage}

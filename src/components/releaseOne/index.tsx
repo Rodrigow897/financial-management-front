@@ -2,15 +2,17 @@ import { Text, View } from 'react-native';
 import styles from './styles';
 
 type props = {
-    title: string
-    subtitle: string
+    name: string,
+    category: string,
+    value: number
 }
 
-export function Release({title, subtitle, ...rest}: props){
+export function Release({name, category, value, ...rest}: props){
     return (
         <View style={styles.container} {...rest}>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.subtitle}>{subtitle}</Text>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.category}>{category}</Text>
+            <Text style={styles.value}>R$ {value}</Text>
         </View>
     )
 }

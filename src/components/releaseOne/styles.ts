@@ -4,11 +4,14 @@ const styles = StyleSheet.create({
     container: {
         
     },
-    title: {
+    name: {
 
     },
-    subtitle: {
+    category: {
         
+    },
+    value: {
+
     }
 });
 
