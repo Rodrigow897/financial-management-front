@@ -17,11 +17,19 @@ import { BlurView } from 'expo-blur';
 import { router } from 'expo-router';
 import { useState } from 'react';
 
+import releaseData from '@/components/utils/releases';
 import { Alert, Modal, Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
 
 
+
+type releasesType = {
+  id: string;
+  name: string;
+  year: string;
+  value: number;
+};
 
 
 export default function home(){
@@ -30,6 +38,43 @@ export default function home(){
     const [modalVisible, setModalVisible] = useState(false);
     const [transactionType, setTransactionType] = useState<'entrada' | 'saida' | null>(null);
 
+    type ReleaseType = {
+        id: string;
+        name: string;
+        category: string;
+        value: number
+        onDelete: (id: string) => void;
+    };
+
+     const [releases, setReleases] = useState<ReleaseType[]>([]);
+    const [name, setName] = useState('');
+    const [category, setCategory] = useState('');
+    const [value, setValue] = useState('');
+
+
+    const addRelease = (id:string, name: string, category: string, value: number) => {
+        const newRelease: ReleaseType = {
+            id: Date.now().toString(), // id automático
+            name,
+            category,
+            value,
+            onDelete: function (id: string): void {
+                throw new Error("Function not implemented.");
+            }
+        };
+        setReleases([...releases, newRelease]);
+    };
+
+    function handleDelete(id: string) {
+    setReleases((prev) => prev.filter((item) => item.id !== id));
+  }
+
+  const EmptyListMessage = () => (
+        <View style={styles.emptyContainer}>
+            <MaterialIcons style={styles.emptyIcon} name="sticky-note-2" size={30} color="#676767"/>
+            <Text style={styles.emptyText}>Você ainda não registrou despesas ou receitas {"\n"} neste mês</Text>
+        </View>
+    );
 
 
     return(
@@ -72,6 +117,9 @@ export default function home(){
                 </View>
 
                 <ReleasesList  
+                   onDelete={handleDelete}
+                   data={releaseData}
+                   listEmpyComponent={EmptyListMessage}
                 />
             </View>
 
