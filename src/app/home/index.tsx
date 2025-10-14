@@ -28,6 +28,8 @@ export default function home(){
     const [selected, setSelected] = useState(months[0].name);
     const [counter, setCounter] = useState(0)
     const [modalVisible, setModalVisible] = useState(false);
+    const [transactionType, setTransactionType] = useState<'entrada' | 'saida' | null>(null);
+
 
 
     return(
@@ -51,8 +53,9 @@ export default function home(){
             <Card
                 name={selected}
                 year={2025}
-                used={1000}
-                limit={2000}
+                used={0.00}
+                limit={0.00}
+                budget={200000}
                 onAdd={() => Alert.alert("Definir orçamento", "Deseja mesmo definir um novo orçamento?", [
                     { text: "Cancelar", onPress: () => console.log("Cancelado"), style: "cancel"},
                     { text: "OK", onPress: () => router.push('../add')},
@@ -113,15 +116,51 @@ export default function home(){
 
                             {/*button entrada / saida*/}
                             <View style={styles.inOutContainer}>
-                                <TouchableOpacity style={styles.inButton}>
-                                    <Text style={styles.inText}>Entrada</Text>
-                                    <MaterialIcons name='arrow-drop-up' size={24} color={'#1FA342'}/>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.outButton}>
-                                    <Text style={styles.outText}>Saída</Text>
-                                    <MaterialIcons name='arrow-drop-down' size={24} color={'#D93A4A'}/>
-                                </TouchableOpacity>
+                            <TouchableOpacity
+                                style={[
+                                styles.inButton,
+                                transactionType === 'entrada' && styles.selectedButtonIn
+                                ]}
+                                onPress={() => setTransactionType('entrada')}
+                                >
+                                <Text
+                                style={[
+                                    styles.inText,
+                                    transactionType === 'entrada' && styles.selectedText
+                                ]}
+                                >
+                                Entrada
+                                </Text>
+                                <MaterialIcons
+                                name='arrow-drop-up'
+                                size={24}
+                                color={transactionType === 'entrada' ? '#fff' : '#1FA342'}
+                                />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={[
+                                styles.outButton,
+                                transactionType === 'saida' && styles.selectedButtonOut
+                                ]}
+                                onPress={() => setTransactionType('saida')}
+                            >
+                                <Text
+                                style={[
+                                    styles.outText,
+                                    transactionType === 'saida' && styles.selectedText
+                                ]}
+                                >
+                                Saída
+                                </Text>
+                                <MaterialIcons
+                                name='arrow-drop-down'
+                                size={24}
+                                color={transactionType === 'saida' ? '#fff' : '#D93A4A'}
+                                />
+                            </TouchableOpacity>
                             </View>
+
                         
 
                             <View style={{width: '100%', marginTop: 35}}>

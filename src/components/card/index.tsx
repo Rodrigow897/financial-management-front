@@ -8,10 +8,11 @@ type Props = {
     year: number
     used: number
     limit: number
+    budget?: number;
     onAdd?: () => void
 }
 
-export function Card({name, year, used, limit, onAdd}: Props){
+export function Card({name, year, used, limit, budget, onAdd}: Props){
     return(
         <View style={styles.card}>
             
@@ -30,11 +31,17 @@ export function Card({name, year, used, limit, onAdd}: Props){
                     </View>
 
                     <View style={styles.cardBody}>
-                        <Text style={styles.cardBodyText}>Orçamento disponivel</Text>
-                        <TouchableOpacity onPress={onAdd} style={styles.button}>
+                        <Text style={styles.cardBodyText}>Orçamento disponível</Text>
+
+                        {typeof budget === 'number' ? (
+                            <Text style={styles.budgetValue}>R$ {budget.toFixed(2)}</Text>
+                        ) : (
+                            <TouchableOpacity onPress={onAdd} style={styles.button}>
                             <Text style={styles.buttonText}>Definir orçamento</Text>
-                        </TouchableOpacity>
+                            </TouchableOpacity>
+                        )}
                     </View>
+
 
                     <View style={styles.cardFooter}>
                         <View style={styles.used}>

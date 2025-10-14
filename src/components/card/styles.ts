@@ -94,6 +94,13 @@ const styles = StyleSheet.create({
     limitNumber:{
         color: '#F9FBF9',
         fontSize: 14
+    },
+    budgetValue: {
+        fontSize: 22,
+        color: '#F9FBF9',
+        fontWeight: '700',
+        alignSelf: 'center',
+        marginTop: 8
     }
 });
 

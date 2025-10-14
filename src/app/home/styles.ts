@@ -128,7 +128,21 @@ const styles = StyleSheet.create({
     color: '#D93A4A',
     fontWeight: '700',
     fontSize: 14,
-  }
+  },
+  selectedButtonIn: {
+  backgroundColor: '#1FA342', // ou outra cor destacada
+  borderWidth: 1,
+  borderColor: '#1FA342',
+},
+selectedButtonOut: {
+  backgroundColor: '#d32c2cff', // ou outra cor destacada
+  borderWidth: 1,
+  borderColor: '#d32c2cff',
+},
+selectedText: {
+  color: '#fff',
+},
+
 })
 
 export default styles
