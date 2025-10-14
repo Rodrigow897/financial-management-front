@@ -17,25 +17,16 @@ import { BlurView } from 'expo-blur';
 import { router } from 'expo-router';
 import { useState } from 'react';
 
-import releaseData from '@/components/utils/releases';
 import { Alert, Modal, Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
-
-
-
-type releasesType = {
-  id: string;
-  name: string;
-  year: string;
-  value: number;
-};
 
 
 export default function home(){
     const [selected, setSelected] = useState(months[0].name);
     const [counter, setCounter] = useState(0)
     const [modalVisible, setModalVisible] = useState(false);
+    const [type, setType] = useState(true);
     const [transactionType, setTransactionType] = useState<'entrada' | 'saida' | null>(null);
 
     type ReleaseType = {
@@ -46,27 +37,45 @@ export default function home(){
         onDelete: (id: string) => void;
     };
 
-     const [releases, setReleases] = useState<ReleaseType[]>([]);
+    const [releases, setReleases] = useState<ReleaseType[]>([]);
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [value, setValue] = useState('');
 
 
-    const addRelease = (id:string, name: string, category: string, value: number) => {
-        const newRelease: ReleaseType = {
-            id: Date.now().toString(), // id automático
-            name,
-            category,
-            value,
-            onDelete: function (id: string): void {
-                throw new Error("Function not implemented.");
-            }
+    function handleAddRelease() {
+
+
+        if (name === null || category === null || value === null || transactionType === null) {
+            Alert.alert('Preencha todos os campos');
+            return;
         };
+    
+        const newRelease: ReleaseType = {
+          id: Date.now().toString(),
+          name,
+          category,
+          value: parseFloat(value),
+          onDelete: handleDelete,
+        };
+    
+        if(isNaN(parseFloat(value))) {
+            Alert.alert('Valor inválido');
+            return;
+        }
+    
         setReleases([...releases, newRelease]);
-    };
+        setValue('');
+        setCounter(counter + 1);
+        setModalVisible(false);
+        setName('');
+        setCategory('');
+        setTransactionType(null);
+      }
 
     function handleDelete(id: string) {
     setReleases((prev) => prev.filter((item) => item.id !== id));
+    setCounter(counter - 1);
   }
 
   const EmptyListMessage = () => (
@@ -118,7 +127,7 @@ export default function home(){
 
                 <ReleasesList  
                    onDelete={handleDelete}
-                   data={releaseData}
+                   data={releases}
                    listEmpyComponent={EmptyListMessage}
                 />
             </View>
@@ -143,10 +152,12 @@ export default function home(){
                             <View style={{gap: 10, width: '100%'}}>
                                 <Input
                                     placeholder='Título da transação'
+                                    onChangeText={setName}
                                 ></Input>
                                 <InputWithIcon
                                     placeholder='Categoria'
                                     icon='label-important-outline'
+                                    onChangeText={setCategory}
                                 />
                             </View>
 
@@ -155,10 +166,12 @@ export default function home(){
                                     name='R$'
                                     placeholder='0,00'
                                     keyboardType='numeric'
+                                    onChangeText={setValue}
                                 />
                                 <DataPicker
                                     icon='calendar-month'
-                                    placeholder='00/00/0000 '
+                                    placeholder='00/00/0000'
+                                    editable={true}
                                 />
                             </View>
 
@@ -166,17 +179,15 @@ export default function home(){
                             <View style={styles.inOutContainer}>
                             <TouchableOpacity
                                 style={[
-                                styles.inButton,
-                                transactionType === 'entrada' && styles.selectedButtonIn
+                                    styles.inButton,
+                                    transactionType === 'entrada' && styles.selectedButtonIn
                                 ]}
-                                onPress={() => setTransactionType('entrada')}
-                                >
+                                    onPress={() => setTransactionType('entrada')}>
                                 <Text
                                 style={[
                                     styles.inText,
                                     transactionType === 'entrada' && styles.selectedText
-                                ]}
-                                >
+                                ]}>
                                 Entrada
                                 </Text>
                                 <MaterialIcons
@@ -213,7 +224,8 @@ export default function home(){
 
                             <View style={{width: '100%', marginTop: 35}}>
                                 <Button      
-                                title='Salvar' 
+                                title='Salvar'
+                                onPress={handleAddRelease}
                                 />
                             </View>
                            

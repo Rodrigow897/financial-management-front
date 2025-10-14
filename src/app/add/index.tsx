@@ -74,7 +74,7 @@ function handleDelete(id: string) {
                         placeholder= {date.toLocaleDateString('pt-BR')}
                         placeholderTextColor='#000000'
                         value={year}
-                        edit={false}
+                        editable={false}
                     />
                     <InputValue
                         style={{width: 153}}

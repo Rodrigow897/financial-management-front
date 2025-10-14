@@ -15,7 +15,6 @@ type Props = TextInputProps & {
   icon?: keyof typeof MaterialIcons.glyphMap;
   placeholder?: string;
   style?: any;
-  edit?: boolean,
   placholderColor?: string;
 };
 
@@ -46,9 +45,7 @@ export function DataPicker({
   };
 
   const showDatePicker = () => {
-    if (Platform.OS === "ios") {
-      setTempDate(date || new Date());
-    }
+    setTempDate(date || new Date());
     setShowPicker(true);
   };
 
@@ -62,15 +59,17 @@ export function DataPicker({
           style={styles.iconOverlay}
         />
       )}
+
+      {/* 🔧 Corrigido: removido "disabled={!editable}" */}
       <Pressable onPress={showDatePicker}
-        disabled={!editable}>
-          
+      disabled={!editable}
+      >
         <TextInput
           style={[styles.input, style]}
           value={date ? date.toLocaleDateString("pt-BR") : ""}
           placeholder={placeholder || "Selecione a data"}
           placeholderTextColor={placeholderTextColor || "#676767"}
-          editable={editable}
+          editable={false} // impede digitação manual, mas permite o clique
           pointerEvents="none"
         />
       </Pressable>
