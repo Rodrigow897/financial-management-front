@@ -1,9 +1,9 @@
 import Button from '@/components/button';
 import Card from '@/components/card';
 import { Input } from '@/components/input';
+import InputPicker from '@/components/inputPicker';
 
 import InputValue from '@/components/inputValue';
-import InputWithIcon from '@/components/inputWithIcon';
 import { MonthList } from '@/components/monthsList';
 import { Perfil } from '@/components/perfil';
 
@@ -46,7 +46,7 @@ export default function home(){
 
             // Centraliza o mês atual ao abrir
             setTimeout(() => {
-                monthListRef.current?.scrollToIndex({
+                monthListRef.current?.scrollToIndex({ 
                 index: foundIndex,
                 animated: true,
                 viewPosition: 0.5, // ← centraliza
@@ -82,7 +82,6 @@ export default function home(){
     const [category, setCategory] = useState('');
     const [value, setValue] = useState('');
     const [date, setDate] = useState('');
-    const [icon, setIcon] = useState('');
 
 
 
@@ -207,11 +206,16 @@ export default function home(){
                                     placeholder='Título da transação'
                                     onChangeText={setName}
                                 ></Input>
-                                <InputWithIcon
-                                    placeholder='Categoria'
-                                    icon='label-important-outline'
-                                    onChangeText={setCategory}
+                                
+                                <InputPicker
+                                    icon="add-shopping-cart"
+                                    placeholder="Selecione a categoria"
+                                    selectedValue={category}
+                                    onValueChange={setCategory}
+                                    options={["Conta de luz", "Mercado", "Saúde", "Academia"]}
                                 />
+
+
                             </View>
 
                             <View style={styles.valueInputContainer}>
