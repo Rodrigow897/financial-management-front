@@ -15,9 +15,9 @@ import { MaterialIcons } from '@expo/vector-icons';
 import DataPicker from '@/components/dataPicker';
 import { BlurView } from 'expo-blur';
 import { router } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { Alert, Modal, Text, TouchableOpacity, View } from "react-native";
+import { Alert, FlatList, Modal, Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
 
@@ -26,14 +26,54 @@ export default function home(){
     const [selected, setSelected] = useState(months[0].name);
     const [counter, setCounter] = useState(0)
     const [modalVisible, setModalVisible] = useState(false);
-    const [type, setType] = useState(true);
     const [transactionType, setTransactionType] = useState<'entrada' | 'saida' | null>(null);
+    const monthListRef = useRef<FlatList>(null);
+
+       useEffect(() => {
+             // Pega o mês atual e gera abreviação
+            const currentMonthAbbr = new Date()
+                .toLocaleString("pt-BR", { month: "short" })
+                .replace(".", "")
+                .substring(0, 3)
+                .toLowerCase();
+
+            const foundIndex = months.findIndex((m) =>
+                m.name.toLowerCase().startsWith(currentMonthAbbr)
+            );
+
+            if (foundIndex !== -1) {
+                setSelected(months[foundIndex].name);
+
+            // Centraliza o mês atual ao abrir
+            setTimeout(() => {
+                monthListRef.current?.scrollToIndex({
+                index: foundIndex,
+                animated: true,
+                viewPosition: 0.5, // ← centraliza
+             });
+            }, 300);
+            }
+    }, []);
+
+    const handleSelectMonth = (item: string, index: number) => {
+        setSelected(item);
+
+        monthListRef.current?.scrollToIndex({
+            index,
+            animated: true,
+            viewPosition: 0.5,
+         });
+        };
+
+  
 
     type ReleaseType = {
         id: string;
         name: string;
         category: string;
         value: number
+        date: string;
+        icon: keyof typeof MaterialIcons.glyphMap;
         onDelete: (id: string) => void;
     };
 
@@ -41,12 +81,16 @@ export default function home(){
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [value, setValue] = useState('');
+    const [date, setDate] = useState('');
+    const [icon, setIcon] = useState('');
+
+
 
 
     function handleAddRelease() {
 
 
-        if (name === null || category === null || value === null || transactionType === null) {
+        if (name === null || category === null || value === null || transactionType === null || date === null) {
             Alert.alert('Preencha todos os campos');
             return;
         };
@@ -55,6 +99,8 @@ export default function home(){
           id: Date.now().toString(),
           name,
           category,
+          date,
+          icon: transactionType === 'entrada' ? 'arrow-drop-up' : 'arrow-drop-down',
           value: parseFloat(value),
           onDelete: handleDelete,
         };
@@ -63,6 +109,8 @@ export default function home(){
             Alert.alert('Valor inválido');
             return;
         }
+        
+        console.log(newRelease);
     
         setReleases([...releases, newRelease]);
         setValue('');
@@ -71,6 +119,7 @@ export default function home(){
         setName('');
         setCategory('');
         setTransactionType(null);
+        setDate('');
       }
 
     function handleDelete(id: string) {
@@ -98,9 +147,12 @@ export default function home(){
             ])}
             />
 
-            <MonthList 
+            <MonthList
+                /// <reference path="" />
+                ref={monthListRef}
                 selected={selected}
                 onChange={setSelected}
+                onScroll={handleSelectMonth}
             />
 
             {/* Card */}
@@ -109,7 +161,7 @@ export default function home(){
                 year={2025}
                 used={0.00}
                 limit={0.00}
-                budget={200000}
+    
                 onAdd={() => Alert.alert("Definir orçamento", "Deseja mesmo definir um novo orçamento?", [
                     { text: "Cancelar", onPress: () => console.log("Cancelado"), style: "cancel"},
                     { text: "OK", onPress: () => router.push('../add')},
@@ -129,6 +181,7 @@ export default function home(){
                    onDelete={handleDelete}
                    data={releases}
                    listEmpyComponent={EmptyListMessage}
+
                 />
             </View>
 
@@ -172,6 +225,7 @@ export default function home(){
                                     icon='calendar-month'
                                     placeholder='00/00/0000'
                                     editable={true}
+                                    onChangeDate={setDate}
                                 />
                             </View>
 

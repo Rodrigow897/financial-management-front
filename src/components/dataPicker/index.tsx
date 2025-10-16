@@ -16,6 +16,7 @@ type Props = TextInputProps & {
   placeholder?: string;
   style?: any;
   placholderColor?: string;
+  onChangeDate?: (dateString: string) => void;
 };
 
 export function DataPicker({
@@ -24,6 +25,7 @@ export function DataPicker({
   placeholder,
   editable,
   placeholderTextColor,
+  onChangeDate,
 }: Props) {
   const [date, setDate] = useState<Date | null>(null);
   const [showPicker, setShowPicker] = useState(false);
@@ -32,7 +34,10 @@ export function DataPicker({
   const onChange = (event: any, selectedDate?: Date) => {
     if (Platform.OS === "android") {
       setShowPicker(false);
-      if (selectedDate) setDate(selectedDate);
+      if (selectedDate) {setDate(selectedDate);
+        const formatted = selectedDate.toLocaleDateString("pt-BR");
+        onChangeDate?.(formatted); // envia pro pai
+      }
     } else {
       // iOS: apenas atualiza data temporária
       if (selectedDate) setTempDate(selectedDate);
@@ -42,6 +47,8 @@ export function DataPicker({
   const confirmIOSDate = () => {
     setDate(tempDate);
     setShowPicker(false);
+    const formatted = tempDate.toLocaleDateString("pt-BR");
+    onChangeDate?.(formatted);
   };
 
   const showDatePicker = () => {
@@ -60,7 +67,7 @@ export function DataPicker({
         />
       )}
 
-      {/* 🔧 Corrigido: removido "disabled={!editable}" */}
+     
       <Pressable onPress={showDatePicker}
       disabled={!editable}
       >
