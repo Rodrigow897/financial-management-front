@@ -89,7 +89,7 @@ export default function home(){
     function handleAddRelease() {
 
 
-        if (name === null || category === null || value === null || transactionType === null || date === null) {
+        if (name === null || !category || value === null || transactionType === null || date === null) {
             Alert.alert('Preencha todos os campos');
             return;
         };
